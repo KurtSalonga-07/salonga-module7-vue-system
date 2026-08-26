@@ -400,11 +400,11 @@ const categoryStats = computed(() => {
       percentage:
         books.value.length
           ? Math.round(
-              (
-                count /
-                books.value.length
-              ) * 100
-            )
+            (
+              count /
+              books.value.length
+            ) * 100
+          )
           : 0
 
     }))
@@ -464,23 +464,16 @@ function getBookColor(index) {
          HEADER
     ====================================================== -->
 
-    <AppHeader
-      @navigate="navigate"
-    />
+    <AppHeader @navigate="navigate" />
 
 
-    <main
-      class="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8"
-    >
+    <main class="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
 
       <!-- ===================================================
            DASHBOARD HERO
       ==================================================== -->
 
-      <section
-        id="dashboard"
-        class="dashboard-anchor mb-7 grid gap-5 xl:grid-cols-[1.45fr_.55fr]"
-      >
+      <section id="dashboard" class="dashboard-anchor mb-7 grid gap-5 xl:grid-cols-[1.45fr_.55fr]">
 
         <div class="hero-dashboard redesigned-hero">
 
@@ -538,11 +531,7 @@ function getBookColor(index) {
 
             <div class="hero-actions hero-actions-large">
 
-              <button
-                class="hero-primary hero-primary-large"
-                type="button"
-                @click="navigate('add')"
-              >
+              <button class="hero-primary hero-primary-large" type="button" @click="navigate('add')">
 
                 <span class="button-plus">
                   ＋
@@ -555,11 +544,7 @@ function getBookColor(index) {
               </button>
 
 
-              <button
-                class="hero-secondary hero-secondary-large"
-                type="button"
-                @click="navigate('books')"
-              >
+              <button class="hero-secondary hero-secondary-large" type="button" @click="navigate('books')">
 
                 <span>
                   View Collection
@@ -651,10 +636,7 @@ function getBookColor(index) {
 
           <!-- LIBRARY ILLUSTRATION -->
 
-          <div
-            class="hero-library-art-clean improved-library-art"
-            aria-hidden="true"
-          >
+          <div class="hero-library-art-clean improved-library-art" aria-hidden="true">
 
             <div class="library-glow"></div>
 
@@ -808,9 +790,7 @@ function getBookColor(index) {
            STATISTICS
       ==================================================== -->
 
-      <section
-        class="mb-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
-      >
+      <section class="mb-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
 
         <div class="new-stat-card purple-card">
 
@@ -926,10 +906,7 @@ function getBookColor(index) {
            OVERVIEW
       ==================================================== -->
 
-      <section
-        id="overview"
-        class="dashboard-grid mb-7"
-      >
+      <section id="overview" class="dashboard-grid mb-7">
 
         <div class="overview-card">
 
@@ -990,40 +967,22 @@ function getBookColor(index) {
                 <div class="chart-line three"></div>
 
 
-                <svg
-                  viewBox="0 0 600 220"
-                  preserveAspectRatio="none"
-                >
+                <svg viewBox="0 0 600 220" preserveAspectRatio="none">
 
                   <defs>
 
-                    <linearGradient
-                      id="libraryArea"
-                      x1="0"
-                      y1="0"
-                      x2="0"
-                      y2="1"
-                    >
+                    <linearGradient id="libraryArea" x1="0" y1="0" x2="0" y2="1">
 
-                      <stop
-                        offset="0%"
-                        stop-color="#8b5cf6"
-                        stop-opacity=".3"
-                      />
+                      <stop offset="0%" stop-color="#8b5cf6" stop-opacity=".3" />
 
-                      <stop
-                        offset="100%"
-                        stop-color="#8b5cf6"
-                        stop-opacity="0"
-                      />
+                      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
 
                     </linearGradient>
 
                   </defs>
 
 
-                  <path
-                    d="
+                  <path d="
                       M0 185
                       C50 165 75 155 120 168
                       C160 178 185 125 225 145
@@ -1033,13 +992,10 @@ function getBookColor(index) {
                       C560 86 580 58 600 42
                       L600 220
                       L0 220 Z
-                    "
-                    fill="url(#libraryArea)"
-                  />
+                    " fill="url(#libraryArea)" />
 
 
-                  <path
-                    d="
+                  <path d="
                       M0 185
                       C50 165 75 155 120 168
                       C160 178 185 125 225 145
@@ -1047,20 +1003,10 @@ function getBookColor(index) {
                       C370 152 390 78 430 103
                       C475 125 500 65 540 80
                       C560 86 580 58 600 42
-                    "
-                    fill="none"
-                    stroke="#8b5cf6"
-                    stroke-width="5"
-                    stroke-linecap="round"
-                  />
+                    " fill="none" stroke="#8b5cf6" stroke-width="5" stroke-linecap="round" />
 
 
-                  <circle
-                    cx="600"
-                    cy="42"
-                    r="7"
-                    fill="#8b5cf6"
-                  />
+                  <circle cx="600" cy="42" r="7" fill="#8b5cf6" />
 
                 </svg>
 
@@ -1113,26 +1059,16 @@ function getBookColor(index) {
               </div>
 
 
-              <div
-                v-if="categoryStats.length"
-                class="category-list"
-              >
+              <div v-if="categoryStats.length" class="category-list">
 
-                <div
-                  v-for="(category, index) in categoryStats"
-                  :key="category.name"
-                  class="category-item"
-                >
+                <div v-for="(category, index) in categoryStats" :key="category.name" class="category-item">
 
                   <div class="category-item-top">
 
                     <div class="category-name">
 
-                      <i
-                        :class="
-                          `category-dot ${getCategoryColor(index)}`
-                        "
-                      ></i>
+                      <i :class="`category-dot ${getCategoryColor(index)}`
+                        "></i>
 
                       {{ category.name }}
 
@@ -1147,15 +1083,11 @@ function getBookColor(index) {
 
                   <div class="category-progress">
 
-                    <span
-                      :class="
-                        getCategoryColor(index)
-                      "
-                      :style="{
+                    <span :class="getCategoryColor(index)
+                      " :style="{
                         width:
                           `${category.percentage}%`
-                      }"
-                    ></span>
+                      }"></span>
 
                   </div>
 
@@ -1164,10 +1096,7 @@ function getBookColor(index) {
               </div>
 
 
-              <div
-                v-else
-                class="overview-empty"
-              >
+              <div v-else class="overview-empty">
 
                 <span>
                   ◇
@@ -1218,13 +1147,10 @@ function getBookColor(index) {
           </div>
 
 
-          <div
-            class="large-status-ring"
-            :style="{
-              '--status':
-                availabilityPercentage
-            }"
-          >
+          <div class="large-status-ring" :style="{
+            '--status':
+              availabilityPercentage
+          }">
 
             <div class="status-ring-inner">
 
@@ -1281,9 +1207,7 @@ function getBookColor(index) {
            RECENT BOOKS
       ==================================================== -->
 
-      <section
-        class="recent-books-dashboard mb-7"
-      >
+      <section class="recent-books-dashboard mb-7">
 
         <div class="recent-books-header">
 
@@ -1304,11 +1228,7 @@ function getBookColor(index) {
           </div>
 
 
-          <button
-            class="recent-view-button"
-            type="button"
-            @click="navigate('books')"
-          >
+          <button class="recent-view-button" type="button" @click="navigate('books')">
 
             View All
 
@@ -1321,23 +1241,12 @@ function getBookColor(index) {
         </div>
 
 
-        <div
-          v-if="recentBooks.length"
-          class="recent-books-grid"
-        >
+        <div v-if="recentBooks.length" class="recent-books-grid">
 
-          <article
-            v-for="(book, index) in recentBooks"
-            :key="book.id"
-            class="new-book-card"
-          >
+          <article v-for="(book, index) in recentBooks" :key="book.id" class="new-book-card">
 
-            <div
-              class="new-book-cover"
-              :class="
-                `book-cover-${getBookColor(index)}`
-              "
-            >
+            <div class="new-book-cover" :class="`book-cover-${getBookColor(index)}`
+              ">
 
               <div class="book-cover-shine"></div>
 
@@ -1373,14 +1282,10 @@ function getBookColor(index) {
 
               <div class="new-book-bottom">
 
-                <span
-                  class="book-status"
-                  :class="
-                    book.status === 'Available'
-                      ? 'available'
-                      : 'borrowed'
-                  "
-                >
+                <span class="book-status" :class="book.status === 'Available'
+                    ? 'available'
+                    : 'borrowed'
+                  ">
 
                   <i></i>
 
@@ -1402,10 +1307,7 @@ function getBookColor(index) {
         </div>
 
 
-        <div
-          v-else
-          class="recent-empty"
-        >
+        <div v-else class="recent-empty">
 
           <div>
             📚
@@ -1419,10 +1321,7 @@ function getBookColor(index) {
             Add your first book to see it here.
           </p>
 
-          <button
-            type="button"
-            @click="navigate('add')"
-          >
+          <button type="button" @click="navigate('add')">
             ＋ Add First Book
           </button>
 
@@ -1435,10 +1334,7 @@ function getBookColor(index) {
            BOOK FORM
       ==================================================== -->
 
-      <section
-        id="book-form"
-        class="mb-8 scroll-mt-24"
-      >
+      <section id="book-form" class="mb-8 scroll-mt-24">
 
         <div class="section-heading">
 
@@ -1469,24 +1365,14 @@ function getBookColor(index) {
              SUCCESS / ERROR MESSAGE
         ==================================================== -->
 
-        <Transition
-          enter-active-class="transition-all duration-300"
-          enter-from-class="opacity-0 -translate-y-2"
-          enter-to-class="opacity-100 translate-y-0"
-          leave-active-class="transition-all duration-300"
-          leave-from-class="opacity-100 translate-y-0"
-          leave-to-class="opacity-0 -translate-y-2"
-        >
+        <Transition enter-active-class="transition-all duration-300" enter-from-class="opacity-0 -translate-y-2"
+          enter-to-class="opacity-100 translate-y-0" leave-active-class="transition-all duration-300"
+          leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-2">
 
-          <div
-            v-if="message"
-            class="mb-4 flex w-full items-center justify-between rounded-xl border px-5 py-3"
-            :class="
-              messageType === 'success'
-                ? 'border-emerald-300/20 bg-emerald-500/10 text-emerald-300'
-                : 'border-red-300/20 bg-red-500/10 text-red-300'
-            "
-          >
+          <div v-if="message" class="mb-4 flex w-full items-center justify-between rounded-xl border px-5 py-3" :class="messageType === 'success'
+              ? 'border-emerald-300/20 bg-emerald-500/10 text-emerald-300'
+              : 'border-red-300/20 bg-red-500/10 text-red-300'
+            ">
 
             <div class="flex items-center gap-3">
 
@@ -1500,12 +1386,8 @@ function getBookColor(index) {
 
             </div>
 
-            <button
-              type="button"
-              class="text-lg opacity-50 transition hover:opacity-100"
-              aria-label="Close notification"
-              @click="message = ''"
-            >
+            <button type="button" class="text-lg opacity-50 transition hover:opacity-100"
+              aria-label="Close notification" @click="message = ''">
               ×
             </button>
 
@@ -1514,11 +1396,7 @@ function getBookColor(index) {
         </Transition>
 
 
-        <BookForm
-          :editing-book="editingBook"
-          @save="saveBook"
-          @cancel="cancelEdit"
-        />
+        <BookForm :editing-book="editingBook" @save="saveBook" @cancel="cancelEdit" />
 
       </section>
 
@@ -1527,20 +1405,11 @@ function getBookColor(index) {
            BOOK COLLECTION
       ==================================================== -->
 
-      <section
-        id="books"
-        class="scroll-mt-24"
-      >
+      <section id="books" class="scroll-mt-24">
 
-        <BookList
-          :books="filteredBooks"
-          :search-term="searchTerm"
-          @update:search-term="
-            searchTerm = $event
-          "
-          @edit="editBook"
-          @delete="deleteBook"
-        />
+        <BookList :books="filteredBooks" :search-term="searchTerm" @update:search-term="
+          searchTerm = $event
+          " @edit="editBook" @delete="deleteBook" />
 
       </section>
 

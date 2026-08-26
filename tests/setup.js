@@ -1,0 +1,43 @@
+const storage = new Map()
+
+const localStorageMock = {
+  getItem(key) {
+    return storage.has(key)
+      ? storage.get(key)
+      : null
+  },
+
+  setItem(key, value) {
+    storage.set(key, String(value))
+  },
+
+  removeItem(key) {
+    storage.delete(key)
+  },
+
+  clear() {
+    storage.clear()
+  },
+
+  key(index) {
+    return Array.from(storage.keys())[index] ?? null
+  },
+
+  get length() {
+    return storage.size
+  }
+}
+
+Object.defineProperty(globalThis, 'localStorage', {
+  configurable: true,
+  writable: true,
+  value: localStorageMock
+})
+
+if (typeof window !== 'undefined') {
+  Object.defineProperty(window, 'localStorage', {
+    configurable: true,
+    writable: true,
+    value: localStorageMock
+  })
+}
