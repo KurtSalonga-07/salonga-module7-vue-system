@@ -130,23 +130,39 @@ The change improves the usability of the existing system by allowing users to fi
 
 ---
 
-## 🏗️ Updated Architecture – Module 9
+## 🧪 Module 9 – Updated Test Cases
 
-The Module 9 update evolves the existing architecture while preserving the existing system structure.
+Final Module 9 test plan containing **12 test cases** covering the new Active/Inactive filtering functionality and regression testing of existing system features.
 
-The updated system includes:
+### Updated Test Cases
 
-- Vue.js Frontend
-- Library Book Management
-- Book Records
-- Search
-- Validation
-- CRUD Operations
-- Active / Inactive / All Filtering
-- Browser LocalStorage
-- Persistent Book Records
+| Test Case ID | Test Case | Expected Result | Actual Result | Status |
+|---|---|---|---|---|
+| **TC01** | Add New Book | New book record is added successfully. | Book record was added successfully. | **PASS** |
+| **TC02** | Add Inactive Book | Book is saved with Inactive status. | Inactive book was saved successfully. | **PASS** |
+| **TC03** | Active Filter | Only Active book records are displayed. | Active filter displayed only Active records. | **PASS** |
+| **TC04** | Inactive Filter | Only Inactive book records are displayed. | Inactive filter displayed only Inactive records. | **PASS** |
+| **TC05** | All Filter | All book records are displayed. | All book records were displayed. | **PASS** |
+| **TC06** | Search with Active Filter | Matching Active book is displayed. | Matching Active record was displayed. | **PASS** |
+| **TC07** | Search with Inactive Filter | Matching Inactive book is displayed. | Matching Inactive record was displayed. | **PASS** |
+| **TC08** | Empty Inactive Results | No records and the empty-state message are displayed. | 0 records and the empty-state message were displayed. | **PASS** |
+| **TC09** | Edit Book Status | Book status changes successfully. | Book status was changed successfully. | **PASS** |
+| **TC10** | Delete Book | Delete confirmation appears and the book is removed. | Delete confirmation and removal worked successfully. | **PASS** |
+| **TC11** | Data Persistence | Book records remain after page refresh. | Book records remained after refresh. | **PASS** |
+| **TC12** | Responsive Filter UI | Filter controls remain usable on desktop and mobile. | Responsive filter interface was maintained. | **PASS** |
 
-The new **Active / Inactive / All filter** is integrated into the existing book record flow without creating a separate system.
+### Automated Test Evidence
+
+- **Vitest:** 5 tests passed, 0 failed
+- **Module 9 Regression Testing:** Completed successfully
+- **Active Filter:** PASS
+- **Inactive Filter:** PASS
+- **All Filter:** PASS
+- **Search with Filters:** PASS
+- **Data Persistence:** PASS
+- **Responsive Filter UI:** PASS
+- **Production Build:** Successful
+- **GitHub Actions:** Successful
 
 ---
 
