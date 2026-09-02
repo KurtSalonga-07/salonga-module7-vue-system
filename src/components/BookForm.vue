@@ -42,11 +42,11 @@ function resetForm() {
 function loadBook(book) {
   clearErrors()
 
-  form.bookId = book.bookId || ''
-  form.title = book.title || ''
-  form.author = book.author || ''
-  form.category = book.category || ''
-  form.status = book.status || 'Available'
+  form.bookId = book?.bookId || ''
+  form.title = book?.title || ''
+  form.author = book?.author || ''
+  form.category = book?.category || ''
+  form.status = book?.status || 'Available'
 }
 
 watch(
@@ -67,30 +67,25 @@ function validateForm() {
   clearErrors()
 
   if (!form.bookId.trim()) {
-    errors.bookId =
-      'Book ID is required.'
+    errors.bookId = 'Book ID is required.'
   }
 
   if (!form.title.trim()) {
-    errors.title =
-      'Book title is required.'
+    errors.title = 'Book title is required.'
   }
 
   if (!form.author.trim()) {
-    errors.author =
-      'Author is required.'
+    errors.author = 'Author is required.'
   }
 
   if (!form.category.trim()) {
-    errors.category =
-      'Category is required.'
+    errors.category = 'Category is required.'
   }
 
   return Object.keys(errors).length === 0
 }
 
 function submitForm() {
-
   if (!validateForm()) {
     return
   }
@@ -115,9 +110,9 @@ function cancelEdit() {
 </script>
 
 <template>
-
   <section class="form-card">
 
+    <!-- FORM HEADER -->
     <div class="form-header">
 
       <div class="form-icon">
@@ -125,13 +120,8 @@ function cancelEdit() {
       </div>
 
       <div>
-
         <h2>
-          {{
-            editingBook
-              ? 'Edit Book'
-              : 'Add New Book'
-          }}
+          {{ editingBook ? 'Edit Book' : 'Add New Book' }}
         </h2>
 
         <p>
@@ -141,19 +131,19 @@ function cancelEdit() {
               : 'Enter the book information below.'
           }}
         </p>
-
       </div>
 
     </div>
 
-
+    <!-- BOOK FORM -->
     <form
-      @submit.prevent="submitForm"
       class="mt-7 space-y-5"
+      @submit.prevent="submitForm"
     >
 
       <div class="grid gap-5 sm:grid-cols-2">
 
+        <!-- BOOK ID -->
         <div class="form-field">
 
           <label for="bookId">
@@ -165,6 +155,7 @@ function cancelEdit() {
             v-model="form.bookId"
             type="text"
             placeholder="e.g. BK001"
+            autocomplete="off"
             :class="{
               'input-error': errors.bookId
             }"
@@ -176,7 +167,7 @@ function cancelEdit() {
 
         </div>
 
-
+        <!-- BOOK TITLE -->
         <div class="form-field">
 
           <label for="title">
@@ -188,6 +179,7 @@ function cancelEdit() {
             v-model="form.title"
             type="text"
             placeholder="Enter book title"
+            autocomplete="off"
             :class="{
               'input-error': errors.title
             }"
@@ -199,7 +191,7 @@ function cancelEdit() {
 
         </div>
 
-
+        <!-- AUTHOR -->
         <div class="form-field">
 
           <label for="author">
@@ -211,6 +203,7 @@ function cancelEdit() {
             v-model="form.author"
             type="text"
             placeholder="Enter author name"
+            autocomplete="off"
             :class="{
               'input-error': errors.author
             }"
@@ -222,7 +215,7 @@ function cancelEdit() {
 
         </div>
 
-
+        <!-- CATEGORY -->
         <div class="form-field">
 
           <label for="category">
@@ -234,6 +227,7 @@ function cancelEdit() {
             v-model="form.category"
             type="text"
             placeholder="e.g. Programming"
+            autocomplete="off"
             :class="{
               'input-error': errors.category
             }"
@@ -245,10 +239,8 @@ function cancelEdit() {
 
         </div>
 
-
-        <div
-          class="form-field sm:col-span-2"
-        >
+        <!-- STATUS -->
+        <div class="form-field sm:col-span-2">
 
           <label for="status">
             Status
@@ -258,7 +250,6 @@ function cancelEdit() {
             id="status"
             v-model="form.status"
           >
-
             <option value="Available">
               Available
             </option>
@@ -266,21 +257,20 @@ function cancelEdit() {
             <option value="Borrowed">
               Borrowed
             </option>
-
           </select>
 
         </div>
 
       </div>
 
-
+      <!-- FORM ACTIONS -->
       <div class="form-actions">
 
         <button
           v-if="editingBook"
           type="button"
-          @click="cancelEdit"
           class="cancel-button"
+          @click="cancelEdit"
         >
           Cancel
         </button>
@@ -289,7 +279,6 @@ function cancelEdit() {
           type="submit"
           class="save-button"
         >
-
           <span>
             {{ editingBook ? '✓' : '＋' }}
           </span>
@@ -299,7 +288,6 @@ function cancelEdit() {
               ? 'Update Book'
               : 'Add Book'
           }}
-
         </button>
 
       </div>
@@ -307,5 +295,4 @@ function cancelEdit() {
     </form>
 
   </section>
-
 </template>

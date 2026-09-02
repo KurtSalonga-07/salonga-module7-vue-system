@@ -1,7 +1,18 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 
-const emit = defineEmits(['navigate'])
+const emit = defineEmits(['navigate', 'logout'])
+
+const props = defineProps({
+  user: {
+    type: Object,
+    default: () => ({
+      name: 'Kurt E. Salonga',
+      email: '',
+      role: 'Librarian'
+    })
+  }
+})
 
 const menuOpen = ref(false)
 const darkMode = ref(false)
@@ -10,8 +21,7 @@ const helpOpen = ref(false)
 const animationsEnabled = ref(true)
 
 onMounted(() => {
-  darkMode.value =
-    localStorage.getItem('module7-theme') === 'dark'
+  darkMode.value = localStorage.getItem('module7-theme') === 'dark'
 
   animationsEnabled.value =
     localStorage.getItem('module7-animations') !== 'off'
@@ -55,8 +65,7 @@ function toggleTheme() {
 }
 
 function toggleAnimations() {
-  animationsEnabled.value =
-    !animationsEnabled.value
+  animationsEnabled.value = !animationsEnabled.value
 
   document.documentElement.classList.toggle(
     'no-animations',
@@ -78,13 +87,29 @@ function openHelp() {
   closeMenu()
   helpOpen.value = true
 }
+
+function logout() {
+  closeMenu()
+  emit('logout')
+}
+
+/* USER INITIALS */
+function getInitials() {
+  const name = props.user?.name || 'User'
+
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map(part => part.charAt(0).toUpperCase())
+    .join('')
+}
 </script>
 
 <template>
 
   <!-- HEADER -->
   <header class="top-header">
-
     <div class="header-inner">
 
       <!-- HAMBURGER -->
@@ -177,7 +202,7 @@ function openHelp() {
       <!-- RIGHT SIDE -->
       <div class="header-actions">
 
-        <!-- ONLY THEME BUTTON -->
+        <!-- THEME BUTTON -->
         <button
           type="button"
           class="theme-toggle"
@@ -198,18 +223,19 @@ function openHelp() {
         <!-- PROFILE -->
         <div class="profile">
 
+          <!-- FIXED INITIALS -->
           <div class="profile-avatar">
-            KE
+            {{ getInitials() }}
           </div>
 
           <div class="hidden lg:block">
 
             <p>
-              Kurt E. Salonga
+              {{ props.user.name }}
             </p>
 
             <span>
-              Librarian
+              {{ props.user.role || 'Librarian' }}
             </span>
 
           </div>
@@ -223,7 +249,6 @@ function openHelp() {
       </div>
 
     </div>
-
   </header>
 
 
@@ -261,6 +286,7 @@ function openHelp() {
       class="side-menu"
     >
 
+      <!-- MENU HEADER -->
       <div class="side-menu-header">
 
         <div>
@@ -284,6 +310,7 @@ function openHelp() {
       </div>
 
 
+      <!-- NAVIGATION -->
       <nav class="side-nav">
 
         <button
@@ -336,6 +363,8 @@ function openHelp() {
 
       <div class="side-divider"></div>
 
+
+      <!-- SYSTEM -->
       <p class="side-section-title">
         SYSTEM
       </p>
@@ -360,9 +389,20 @@ function openHelp() {
           Help & Support
         </button>
 
+        <!-- LOGOUT -->
+        <button
+          class="side-nav-item logout-item"
+          type="button"
+          @click="logout"
+        >
+          <span>↪</span>
+          Logout
+        </button>
+
       </nav>
 
 
+      <!-- MODULE CARD -->
       <div class="side-menu-bottom">
 
         <div class="module-card">
@@ -442,6 +482,7 @@ function openHelp() {
           </p>
 
 
+          <!-- DARK MODE -->
           <div class="setting-row">
 
             <div class="setting-icon">
@@ -472,6 +513,7 @@ function openHelp() {
           </div>
 
 
+          <!-- ANIMATIONS -->
           <div class="setting-row">
 
             <div class="setting-icon">
@@ -581,58 +623,74 @@ function openHelp() {
         <div class="help-list">
 
           <div class="help-item">
+
             <span>＋</span>
 
             <div>
-              <strong>Add a Book</strong>
+              <strong>
+                Add a Book
+              </strong>
 
               <p>
                 Use Add New Book from the menu
                 or dashboard.
               </p>
             </div>
+
           </div>
 
 
           <div class="help-item">
+
             <span>⌕</span>
 
             <div>
-              <strong>Search Books</strong>
+              <strong>
+                Search Books
+              </strong>
 
               <p>
                 Search by title, author,
                 category, or Book ID.
               </p>
             </div>
+
           </div>
 
 
           <div class="help-item">
+
             <span>✎</span>
 
             <div>
-              <strong>Edit Records</strong>
+              <strong>
+                Edit Records
+              </strong>
 
               <p>
                 Click Edit on a book to update
                 its information.
               </p>
             </div>
+
           </div>
 
 
           <div class="help-item">
+
             <span>♧</span>
 
             <div>
-              <strong>Book Status</strong>
+              <strong>
+                Book Status
+              </strong>
 
               <p>
                 Books can be marked Available
                 or Borrowed.
               </p>
             </div>
+
           </div>
 
         </div>
