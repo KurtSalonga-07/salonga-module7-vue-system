@@ -18,9 +18,12 @@ https://kurtsalonga-07.github.io/salonga-module7-vue-system/
 
 **Kurt Lawrence Salonga**
 
-Software Engineering 1  
-Module 7 – Vue.js Library Management System  
-Module 8 – Software Testing  
+Software Engineering 1
+
+Module 7 – Vue.js Library Management System
+
+Module 8 – Software Testing
+
 Module 9 – Software Evolution
 
 ---
@@ -127,13 +130,33 @@ The change improves the usability of the existing system by allowing users to fi
 
 ---
 
+## 🏗️ Updated Architecture – Module 9
+
+The Module 9 update evolves the existing architecture while preserving the existing system structure.
+
+The updated system includes:
+
+- Vue.js Frontend
+- Library Book Management
+- Book Records
+- Search
+- Validation
+- CRUD Operations
+- Active / Inactive / All Filtering
+- Browser LocalStorage
+- Persistent Book Records
+
+The new **Active / Inactive / All filter** is integrated into the existing book record flow without creating a separate system.
+
+---
+
 ## 🧪 Module 8 – Software Testing
 
 Vitest is used to test the major features of the existing Vue.js system.
 
 ### Automated Tests
 
-The system currently includes five automated unit tests:
+The system includes five automated unit tests:
 
 1. **Adds a new book successfully**
 2. **Displays added book records in the collection**
